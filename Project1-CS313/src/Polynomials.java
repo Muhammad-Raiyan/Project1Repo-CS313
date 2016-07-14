@@ -1,12 +1,16 @@
 
 public class Polynomials {
 
-	private Node top;
+	private Node head;
 	private int size;
 	
 	public Polynomials(){
-		top = null;
+		head = null;
 		size = 0;
+	}
+	public Polynomials(int x){
+		head=new Node(x);
+		size++;
 	}
 	
 	public int size() {
@@ -14,43 +18,52 @@ public class Polynomials {
 	}
 	
 	public boolean isEmpty() {
-		return top == null;
+		return head == null;
 	}
 	
 	public void makeEmpty() {
-		top = null;
+		head = null;
 		size = 0;
 	}
 	
-	public void push(int x) {
-		Node n = new Node(x, top);
-		top = n;
+	public void addLast(int x) {
+		if(head==null){
+			head=new Node(x);
+			size++;
+			return;
+		}
+		Node n = new Node(x);
+		Node current=head;
+		while(current.getNext()!=null){
+			current=current.getNext();
+		}
+		current.setNext(n);
 		size++;
 	}
 
-	public Object pop() {
-		Object temp;
-		//if(isEmpty()) throw new StackException("Stack is Empty");
-		temp = top.getElement();
-		top = top.getNext();
+	public int removeLast() {
+		int temp;
+		temp = head.getElement();
+		head = head.getNext();
 		size--;
 		return temp;
 	}
 
-	public Object top() {
-		//if(isEmpty()) throw new StackException("Stack is empty");
-		return top.getElement();
+	public int last() {		
+		return head.getElement();
 	}
 	
+	@Override
 	public String toString(){
-		String out = "";
-		Node current = top;
-		while(!this.isEmpty()){
-			out += (current.getElement() + "\n");
+		StringBuilder out = new StringBuilder();
+		Node current = head;
+		while(current!=null){
+			out.append(current.getElement());
+			out.append(" ");
 			current = current.getNext();
 		}
-		
-		return out;
+		String everything = out.toString();
+		return everything;
 	}
 
 }
