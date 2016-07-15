@@ -1,15 +1,15 @@
 
 public class Polynomials {
 
-	private Node top;
+	private Node head;
 	private int size;
 	
 	public Polynomials(){
-		top = null;
+		head = null;
 		size = 0;
 	}
 	public Polynomials(int x){
-		top=new Node(x);
+		head=new Node(x);
 		size++;
 	}
 	
@@ -18,22 +18,22 @@ public class Polynomials {
 	}
 	
 	public boolean isEmpty() {
-		return top == null;
+		return head == null;
 	}
 	
 	public void makeEmpty() {
-		top = null;
+		head = null;
 		size = 0;
 	}
 	
 	public void addLast(int x) {
-		if(top==null){
-			top=new Node(x);
+		if(head==null){
+			head=new Node(x);
 			size++;
 			return;
 		}
 		Node n = new Node(x);
-		Node current=top;
+		Node current=head;
 		while(current.getNext()!=null){
 			current=current.getNext();
 		}
@@ -43,20 +43,25 @@ public class Polynomials {
 
 	public int removeLast() {
 		int temp;
-		temp = top.getElement();
-		top = top.getNext();
+		temp = head.getElement();
+		head = head.getNext();
 		size--;
 		return temp;
 	}
 
 	public int last() {		
-		return top.getElement();
+		Node current = head;
+		while(current.getNext()!=null){
+			current = current.getNext();
+		}
+		return current.getElement();
+		
 	}
 	
 	@Override
 	public String toString(){
 		StringBuilder out = new StringBuilder();
-		Node current = top;
+		Node current = head;
 		while(current!=null){
 			out.append(current.getElement());
 			out.append(" ");
