@@ -7,11 +7,7 @@ public class Project1 {
 		Polynomials pol1 = new Polynomials();
 		Polynomials pol2 = new Polynomials();
 
-		/*
-		 * IO - Read from file as String, split it after each space, parse it to
-		 * int and add it to polynomial
-		 */
-		if (args.length == 0)
+		if (args.length == 0) // check for file name in command line argument
 			System.out.println("No file specified");
 		else {
 
@@ -21,9 +17,11 @@ public class Project1 {
 			do {
 
 				if ((line = br.readLine()) == null || line.isEmpty()) {
-					System.out.println("The sum of the 2 polynomials is: " + sum(pol1, pol2).toString());
-					System.out.println("The product of the two polynomials is: " + product(pol1, pol2).toString());
-					// System.out.println();
+					System.out.println("First Polynomial: " + pol1.toString());
+					System.out.println("Second Polynomial: " + pol2.toString());
+					System.out.println("Sum: " + sum(pol1, pol2).toString());
+					System.out.println("Product: " + product(pol1, pol2).toString());
+					System.out.println();
 
 					pol1.makeEmpty();
 					pol2.makeEmpty();
@@ -31,8 +29,9 @@ public class Project1 {
 
 				else {
 
+					// Store first string to a polynomials object
 					pol1 = store(line);
-
+					// read next line from txt and store to polynomial object
 					line = br.readLine();
 					pol2 = store(line);
 				}
@@ -45,7 +44,7 @@ public class Project1 {
 
 			} while (line != null);
 
-			br.close();
+			br.close(); // close BufferedReader
 		} // End of IO
 			// System.out.println(everything);
 
