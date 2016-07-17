@@ -44,6 +44,12 @@ public class Polynomials {
 		return current;
 	}
 
+	public void addFirst(int x) {
+		Node temp = head;
+		head = new Node(x);
+		head.setNext(temp);
+	}
+
 	public void addLast(int x) {
 		if (head == null) {
 			head = new Node(x);
@@ -90,6 +96,20 @@ public class Polynomials {
 			current = current.getNext();
 			it = it.getNext();
 		}
+		return this;
+	}
+
+	public Polynomials multiply(int x, int pow) {
+		while (pow != 0) {
+			this.addFirst(0);
+			pow--;
+		}
+		Node current = head;
+		while (current != null) {
+			current.setElement(x * current.getElement());
+			current = current.getNext();
+		}
+
 		return this;
 	}
 

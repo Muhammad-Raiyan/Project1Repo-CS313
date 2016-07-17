@@ -21,10 +21,9 @@ public class Project1 {
 			do {
 
 				if ((line = br.readLine()) == null || line.isEmpty()) {
-					System.out.println("The sum of the 2 polynomials is: ");
-					System.out.println(sum(pol1, pol2).toString());
-					System.out.println("The product of the two polynomials is: ");
-					System.out.println(product(pol1, pol2).toString());
+					System.out.println("The sum of the 2 polynomials is: " + sum(pol1, pol2).toString());
+					System.out.println("The product of the two polynomials is: " + product(pol1, pol2).toString());
+					// System.out.println();
 
 					pol1.makeEmpty();
 					pol2.makeEmpty();
@@ -91,8 +90,31 @@ public class Project1 {
 	}
 
 	public static Polynomials product(Polynomials p1, Polynomials p2) {
+		Polynomials temp1 = new Polynomials(p1);
+		Polynomials temp2 = new Polynomials(p2);
+		Polynomials temp_product = new Polynomials();
+		Node it = temp2.getIterator();
+		int pow = 0;
+		int multiplier;
+		while (it != null) {
+			temp1 = new Polynomials(p1);
+			multiplier = it.getElement();
 
-		return p1;
+			// System.out.println("Multiplier: " + multiplier);
+
+			if (pow == 0)
+				temp_product = temp1.multiply(multiplier, pow);
+			else {
+
+				temp_product = sum(temp_product, temp1.multiply(multiplier, pow));
+				// System.out.println(temp1.toString());
+			}
+			it = it.getNext();
+			pow++;
+			// System.out.println(temp1.toString());
+		}
+
+		return temp_product;
 	}
 
 }
