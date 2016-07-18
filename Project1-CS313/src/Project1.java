@@ -62,7 +62,7 @@ public class Project1 {
 	public static Polynomials store(String s) {
 		Polynomials p = new Polynomials();
 
-		String[] temp_pol = s.split(" ");
+		String[] temp_pol = s.split(",");
 		for (String elements : temp_pol) {
 			p.addLast(Integer.parseInt(elements));
 		}
