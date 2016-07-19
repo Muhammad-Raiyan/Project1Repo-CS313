@@ -18,10 +18,11 @@ public class Polynomials {
 	}
 
 	public Polynomials(int x) {
-		/*
-		 * head = new Node(x); size++;
-		 */
-		this.addLast(x);
+		
+		 head = new Node(x); 
+		 size++;
+		 
+		//this.addLast(x);
 	}
 
 	public int size() {
@@ -40,8 +41,8 @@ public class Polynomials {
 	public Node getIterator() {
 		if (head == null)
 			throw new RuntimeException("Head in getIterator is empty");
-		Node current = head;
-		return current;
+		//Node current = head;
+		return head;
 	}
 
 	public void addFirst(int x) {

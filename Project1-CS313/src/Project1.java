@@ -49,7 +49,6 @@ public class Project1 {
 
 		/*
 		 * System.out.println("Enter a string: "); System.out.flush();
-		 * 
 		 * while((c=System.in.read())!='\r') pol1.addLast(new Integer(c));
 		 */
 		/*
