@@ -18,11 +18,11 @@ public class Polynomials {
 	}
 
 	public Polynomials(int x) {
-		
-		 head = new Node(x); 
-		 size++;
-		 
-		//this.addLast(x);
+
+		head = new Node(x);
+		size++;
+
+		// this.addLast(x);
 	}
 
 	public int size() {
@@ -41,7 +41,7 @@ public class Polynomials {
 	public Node getIterator() {
 		if (head == null)
 			throw new RuntimeException("Head in getIterator is empty");
-		//Node current = head;
+		// Node current = head;
 		return head;
 	}
 
@@ -87,6 +87,24 @@ public class Polynomials {
 
 	}
 
+	public static Polynomials sum(Polynomials p1, Polynomials p2) {
+
+		Polynomials temp1 = new Polynomials(p1);
+		Polynomials temp2 = new Polynomials(p2);
+
+		int diff = temp1.size() - temp2.size();
+
+		if (diff > 0) {
+			for (int i = 0; i < diff; i++)
+				temp2.addLast(0);
+		}
+		if (diff < 0) {
+			for (int i = 0; i < Math.abs(diff); i++)
+				temp1.addLast(0);
+		}
+		return temp1.sumWith(temp2);
+	}
+
 	public Polynomials sumWith(Polynomials p) {
 		if (head == null)
 			throw new RuntimeException("The LinkedList is Empty. Call from sumWith().");
@@ -98,6 +116,30 @@ public class Polynomials {
 			it = it.getNext();
 		}
 		return this;
+	}
+
+	public static Polynomials product(Polynomials p1, Polynomials p2) {
+		Polynomials temp1 = new Polynomials(p1);
+		Polynomials temp2 = new Polynomials(p2);
+		Polynomials temp_product = new Polynomials();
+		Node it = temp2.getIterator();
+		int pow = 0;
+		int multiplier;
+		while (it != null) {
+			temp1 = new Polynomials(p1);
+			multiplier = it.getElement();
+
+			if (pow == 0)
+				temp_product = temp1.multiply(multiplier, pow);
+			else {
+
+				temp_product = sum(temp_product, temp1.multiply(multiplier, pow));
+			}
+			it = it.getNext();
+			pow++;
+		}
+
+		return temp_product;
 	}
 
 	public Polynomials multiply(int x, int pow) {
@@ -120,10 +162,20 @@ public class Polynomials {
 		if (head == null)
 			throw new RuntimeException("The LinkedList is Empty. Call from toString().");
 		Node current = head;
+		int pos = 0;
 		while (current != null) {
-			out.append(current.getElement());
-			out.append(" ");
+			int val = current.getElement();
+
+			if (val > 0) {
+				if(out.length()!=0)out.append(" + ");
+				out.append(current.getElement());
+				if (pos != 0){
+					if(pos>1) out.append("x^" + pos);
+					else out.append("x");
+				}
+			}
 			current = current.getNext();
+			pos++;
 		}
 		String everything = out.toString();
 		return everything;
