@@ -105,34 +105,6 @@ public class Polynomials {
 	}
 
 	/**
-	 * Removes a node from the end of the list, if empty throws exception.
-	 * @return The integer contained in the node
-	 */
-	public int removeLast() {
-		if (head == null)
-			throw new RuntimeException("The LinkedList is Empty. Call from removeLast().");
-		int temp = head.getElement();
-		head = head.getNext();
-		size--;
-		return temp;
-	}
-
-	/**
-	 * Returns the value of the last node of the list
-	 * @return The value contained in the node
-	 */
-	public int last() {
-		if (head == null)
-			throw new RuntimeException("The LinkedList is Empty. Call from last().");
-		Node current = head;
-		while (current.getNext() != null) {
-			current = current.getNext();
-		}
-		return current.getElement();
-
-	}
-
-	/**
 	 * Creates two temporary polynomial object temp1, temp2, normalizes them by adding 0 to first or last,
 	 * and calls sunmWith() method to add temp2 with temp1 updating temp1 in the process.
 	 * Data in p1 and p2 remains unchanged.
@@ -208,7 +180,7 @@ public class Polynomials {
 	}
 
 	/**
-	 * Multiplies a polynomial object with an int and then returns the answer. 
+	 * Multiplies a polynomial object with an integer and then returns the answer. 
 	 * The object from which the call is made is updated to store the answer as well.
 	 * @param x The integer to multiply the polynomials object
 	 * @param pow The power of the variable associated with the coefficient
