@@ -1,5 +1,9 @@
 import java.io.*;
 
+/**
+ * @author Muhammad Islam
+ * @version Project 1 CSCI 313
+ */
 public class Project1 {
 
 	public static void main(String[] args) throws IOException {
@@ -34,15 +38,19 @@ public class Project1 {
 					line = br.readLine();
 					pol2 = store(line);
 				}
-				
 
 			} while (line != null);
 
 			br.close(); // close BufferedReader
 		} // End of IO
-		
+
 	}
 
+	/**
+	 * Takes a string, splits it and stores it to a polynomial object.
+	 * @param s A string that holds the coefficients of the polynomial
+	 * @return A polynomial object where each of the coefficients are stored as elements on the linked list
+	 */
 	public static Polynomials store(String s) {
 		Polynomials p = new Polynomials();
 
