@@ -165,18 +165,27 @@ public class Polynomials {
 		int pos = 0;
 		while (current != null) {
 			int val = current.getElement();
-
-			if (val > 0) {
-				if(out.length()!=0)out.append(" + ");
-				out.append(current.getElement());
-				if (pos != 0){
-					if(pos>1) out.append("x^" + pos);
-					else out.append("x");
+			
+			if(val > 0 ){
+				if(pos == 0) {
+					out.append(val);
 				}
+				else {
+					if(out.length()!=0) out.append(" +");
+					out.append(val + "x");
+					if(pos > 1) out.append("^" + pos);
+				}
+			}
+			else if(val < 0){
+				if(out.length()!=0) out.append(" ");
+				out.append(val);
+				if(pos >= 1) out.append("x");
+				if(pos >1) out.append("^" + pos);
 			}
 			current = current.getNext();
 			pos++;
 		}
+		if(out.length()==0) out.append(0);
 		String everything = out.toString();
 		return everything;
 	}
