@@ -13,20 +13,26 @@ public class Project1 {
 		if (args.length == 0) // check for file name in command line argument
 			System.out.println("No file specified");
 		else {
-
+			/**
+			 * The logic is to read two lines from input.txt and call store method to
+			 * store the string into two polynimials object as integers. When an empty
+			 * line is encountered, the two polynomials are displayed and sum(), product()
+			 * methods are called to calculate the result. 
+			 */
 			BufferedReader br = new BufferedReader(new FileReader(args[0]));
 			String line;
 
 			do {
-
+				// Read one line and check for empty line
 				if ((line = br.readLine()) == null || line.isEmpty()) {
 					System.out.println("First Polynomial: \t" + pol1.toString());
 					System.out.println("Second Polynomial: \t" + pol2.toString());
 					System.out.println("Sum: \t\t\t" + Polynomials.sum(pol1, pol2).toString());
 					System.out.println("Product: \t\t" + Polynomials.product(pol1, pol2).toString());
 					System.out.println();
-
-					pol1.makeEmpty();
+					
+					// Empty both polynomial object to store next two line
+					pol1.makeEmpty();	
 					pol2.makeEmpty();
 				}
 
@@ -34,12 +40,12 @@ public class Project1 {
 
 					// Store first string to a polynomials object
 					pol1 = store(line);
-					// read next line from txt and store to polynomial object
+					// read next line from input.txt and store to polynomial object
 					line = br.readLine();
 					pol2 = store(line);
 				}
 
-			} while (line != null);
+			} while (line != null);	//End of while loop
 
 			br.close(); // close BufferedReader
 		} // End of IO
