@@ -20,10 +20,10 @@ public class Project1 {
 			do {
 
 				if ((line = br.readLine()) == null || line.isEmpty()) {
-					System.out.println("First Polynomial: " + pol1.toString());
-					System.out.println("Second Polynomial: " + pol2.toString());
-					System.out.println("Sum: " + Polynomials.sum(pol1, pol2).toString());
-					System.out.println("Product: " + Polynomials.product(pol1, pol2).toString());
+					System.out.println("First Polynomial: \t" + pol1.toString());
+					System.out.println("Second Polynomial: \t" + pol2.toString());
+					System.out.println("Sum: \t\t\t" + Polynomials.sum(pol1, pol2).toString());
+					System.out.println("Product: \t\t" + Polynomials.product(pol1, pol2).toString());
 					System.out.println();
 
 					pol1.makeEmpty();
